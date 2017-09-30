@@ -1,0 +1,102 @@
+.d-progress {
+    padding: 5px 0;
+    bottom: 35px;
+    position: absolute;
+    height: 15px;
+    width: calc(100% - 30px);
+    background-color: #0077FF;
+    >.d-progress-bar {
+        width: 100%;
+        height: 5px;
+        position: relative;
+        background-color: #ccffcc;
+    }
+}
+
+& * {
+    height: 40px;
+}
+
+.d-control-left {
+    position: absolute;
+    bottom: 0;
+    >div, >button {
+        //display: inline-block;
+        float: left;
+    }
+    //float: left;
+}
+
+.d-control-right {
+    position: absolute;
+    bottom: 0;
+    //top: 5px;
+    right: 15px;
+    
+    >div {
+        display: inline-block;
+    }
+}
+
+& .d-btn {
+    width: 40px;
+    border: none;
+    background-color: transparent;
+}
+
+& img {
+    padding: 10px;
+}
+
+.d-volume-btn {
+    //display: inline-block;
+    float: left;
+}
+
+.d-volume-panel {
+    display: inline-block;
+    width: 52px;
+    margin: 0 10px;
+    height: 100%;
+}
+
+.d-volume-control {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+
+    .d-volume-bar {
+        position: absolute;
+        left: 22px;
+        top:50%;
+        width:12px;
+        height: 12px;
+        border-radius: 6px;
+        margin-top: -6px;
+        background-color: #000;
+
+        &:before {
+            display: block;
+            position: absolute;
+            top: 50%;
+            margin-top: -2px;
+            content: '';
+            height: 3px;
+            width: 64px;
+            background: #fff;
+            left: -58px;
+        }
+
+        &:after {
+            display: block;
+            position: absolute;
+            top:50%;
+            margin-top: -2px;
+            content: '';
+            height: 3px;
+            width: 64px;
+            background: #f00;
+            left: 6px;
+        }
+    }
+}

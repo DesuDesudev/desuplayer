@@ -1,0 +1,32 @@
+ .desuplayer {
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    .d-banner {
+        height: 45px;
+        width: 100%;
+        background-color: rgba(0, 255, 242, 0.66);
+        position: absolute;
+        bottom: 0;
+        padding: 0 15px;
+    }
+    .d-mask {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+    & video {
+        width: 100%;
+        height: 100%;
+    }
+
+    *, ::before, ::after {
+        box-sizing: border-box;
+    }
+}
+
+.d-banner {
+    @import "banner";
+}
