@@ -21,25 +21,31 @@
         <div style="height: 390px">
             <div class="desuplayer" style="border: solid">
                 <!--遮罩 <div class="d-mask"></div> -->
-                <video src="demo.mp4" id="Video1">
+                <video src="demo.mp4" id="Video1" class="d-video">
                     "您的瀏覽器過舊，不支援HTML5，請更新或改用其他瀏覽器"
                 </video>
                 <div class="d-banner">
                     <div class="d-control-left">
-                        <button class="d-icon-play d-btn"><img src="../src/icon/media-play.svg" alt="media play"></button>
+                        <button class="d-btn d-play-btn">
+                            <img class="d-icon-play" src="../src/icon/media-play.svg" alt="media play">
+                            <img class="d-icon-pause" hidden="true" src="../src/icon/media-pause.svg" alt="media pause">
+                        </button>
                         <div class="d-volume">
                             <button class="d-volume-btn d-btn"><img src="../src/icon/volume-high.svg" alt="volume high"></button>
                             <div class="d-volume-panel">
-                                <div class="d-volume-control" draggable="true">
+                                <div class="d-volume-control" draggable="false" style="touch-action: none;">
                                     <div class="d-volume-bar"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="d-time">time</div>
+                        <span class="d-time">time</span>
                     </div>
                     <div class="d-control-right">
-                        <div class="d-setting d-btn"><img src="../src/icon/wrench.svg" alt="wrench"></div>
-                        <div class="d-icon-fullscreen d-btn"><img src="../src/icon/fullscreen-enter.svg" alt="fullscreen enter"></div>
+                        <button class="d-setting d-btn d-setting-btn"><img src="../src/icon/wrench.svg" alt="wrench"></button>
+                        <button class="d-btn d-fullscreen-btn">
+                            <img class="d-icon-fullscreen" src="../src/icon/fullscreen-enter.svg" alt="fullscreen enter">
+                            <img class="d-icon-smallscreen" hidden="true" src="../src/icon/fullscreen-exit.svg" alt="fullscreen exit">
+                        </button>
                     </div>
                     <div class="d-progress">
                         <div class="d-progress-bar"></div>

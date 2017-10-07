@@ -41,16 +41,22 @@
 & .d-btn {
     width: 40px;
     border: none;
+    outline: none;
     background-color: transparent;
 }
 
 & img {
     padding: 10px;
+    user-select: none;
 }
 
 .d-volume-btn {
     //display: inline-block;
     float: left;
+}
+
+.d-time {
+    user-select: none;
 }
 
 .d-volume-panel {
@@ -67,7 +73,7 @@
 
     .d-volume-bar {
         position: absolute;
-        left: 22px;
+        left: 40px;
         top:50%;
         width:12px;
         height: 12px;
