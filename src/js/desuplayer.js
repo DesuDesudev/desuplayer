@@ -18,13 +18,21 @@ var desuplayer = function () {
         this.volumebtn = this.frame.getElementsByClassName('d-volume-btn')[0];
         this.volumecontrol = this.frame.getElementsByClassName('d-volume-control')[0];
         this.volumehandle = this.frame.getElementsByClassName('d-volume-bar')[0];
+        this.timelen = this.frame.getElementsByClassName('d-time-len')[0];
+        this.timenow = this.frame.getElementsByClassName('d-time-now')[0];
+        this.seekbar = this.frame.getElementsByClassName('d-progress-now')[0];
+        this.loadbar = this.frame.getElementsByClassName('d-progress-loaded')[0];
+
+        //物件變數
+        this.videolen = _this.videoframe.duration;
 
         //綁定事件
         this.playbtn.addEventListener('click', this.toggle);
         this.fullscreenbtn.addEventListener('click', this.fullscreen);
         this.videoframe.addEventListener('play', whenplay);
         this.videoframe.addEventListener('pause', whenpause);
-        this.videoframe.addEventListener('volumechange', function () {console.log(_this.videoframe.volume)} );
+        //this.videoframe.addEventListener('volumechange', function () {console.log(_this.videoframe.volume)} );
+        this.videoframe.addEventListener('timeupdate', videoplaying);
         this.volumecontrol.addEventListener('mousedown',() => {
             document.addEventListener('mousemove', volumechange);
             document.addEventListener('mouseup', volumechangeend);
@@ -39,6 +47,15 @@ var desuplayer = function () {
             this.focus = true;
         }, true);
         document.addEventListener('keydown', shortkey);
+
+        //初始化
+        starter();
+    }
+
+    //初始化
+    var starter = function () {
+        //初始化長度
+        _this.timelen.innerHTML = totime(_this.videoframe.duration);
     }
 
     //播放控制
@@ -55,11 +72,25 @@ var desuplayer = function () {
         _this.playbtn.getElementsByClassName('d-icon-play')[0].hidden = true;
         _this.playbtn.getElementsByClassName('d-icon-pause')[0].hidden = false;
     }
-
     //暫停事件
     var whenpause = function () {
         _this.playbtn.getElementsByClassName('d-icon-play')[0].hidden = false;
         _this.playbtn.getElementsByClassName('d-icon-pause')[0].hidden = true;
+    }
+
+    //播放中
+    var videoplaying = function () {
+        _this.timenow.innerHTML = totime(_this.videoframe.currentTime);
+        _this.seekbar.style['width'] = _this.videoframe.currentTime / _this.videolen * 100 + "%";
+    }
+
+    //秒轉換成 分/秒
+    var totime = function (len) {
+        let min = Math.floor(len / 60);
+        let sec = Math.floor(len % 60);
+        if (min.toString().length < 2) min = "0" + min;
+        if (sec.toString().length < 2) sec = "0" + sec;
+        return min + ":" + sec;
     }
 
     //全螢幕
@@ -71,7 +102,7 @@ var desuplayer = function () {
         }
     }
 
-    //音量控制 74-108
+    //音量控制
     //解除事件綁定
     var volumechangeend = function () {
         document.removeEventListener('mousemove', volumechange);
@@ -118,11 +149,3 @@ var desuplayer = function () {
     //回傳建構式
     return desuplayer;
 }();
-
-
-//初始化播放器
-window.onload = function () {
-    dp = new desuplayer({
-        frame: document.getElementsByClassName('desuplayer')[0]
-    });
-}

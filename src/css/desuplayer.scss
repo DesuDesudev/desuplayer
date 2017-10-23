@@ -6,7 +6,7 @@
     .d-banner {
         height: 45px;
         width: 100%;
-        background-color: rgba(0, 255, 242, 0.66);
+        background: linear-gradient(transparent,rgba(0, 255, 242, 0.5));
         position: absolute;
         bottom: 0;
         padding: 0 15px;
@@ -30,3 +30,5 @@
 .d-banner {
     @import "banner";
 }
+
+@import "animation";

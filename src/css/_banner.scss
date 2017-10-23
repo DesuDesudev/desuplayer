@@ -4,12 +4,20 @@
     position: absolute;
     height: 15px;
     width: calc(100% - 30px);
-    background-color: #0077FF;
+    //background-color: #0077FF;
     >.d-progress-bar {
         width: 100%;
-        height: 5px;
+        height: 3px;
         position: relative;
         background-color: #ccffcc;
+        >div {
+            position: absolute;
+            height: 100%;
+        }
+
+        >.d-progress-now {
+            background-color: #00aaff;
+        }
     }
 }
 
@@ -20,6 +28,7 @@
 .d-control-left {
     position: absolute;
     bottom: 0;
+    //left: 15px;
     >div, >button {
         //display: inline-block;
         float: left;
@@ -57,6 +66,8 @@
 
 .d-time {
     user-select: none;
+    font-size: 12px;
+    line-height: 40px;
 }
 
 .d-volume-panel {
@@ -89,8 +100,8 @@
             content: '';
             height: 3px;
             width: 64px;
-            background: #fff;
-            left: -58px;
+            background: #00aaff;
+            left: -64px;
         }
 
         &:after {
@@ -101,8 +112,8 @@
             content: '';
             height: 3px;
             width: 64px;
-            background: #f00;
-            left: 6px;
+            background: rgba(0, 170, 255, 0.212);
+            left: 12px;
         }
     }
 }

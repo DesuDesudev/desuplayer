@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <title>測試</title>
+        <link rel="stylesheet" type="text/css" href="../src/css/desuplayer.css">
+        <script src="../src/js/desuplayer.js"></script>
+        <script>
+            //初始化播放器
+            window.onload = function () {
+                dp = new desuplayer({
+                    frame: document.getElementsByClassName('desuplayer')[0]
+                });
+            }
+        </script>
+    </header>
+    <body>
+        <div class="desuplayer">
+            <!--遮罩 <div class="d-mask"></div> -->
+            <video src="demo1.mp4" id="Video1" class="d-video">
+                "您的瀏覽器過舊，不支援HTML5，請更新或改用其他瀏覽器"
+            </video>
+            <div class="d-banner">
+                <div class="d-control-left">
+                    <button class="d-btn d-play-btn">
+                        <img class="d-icon-play" src="../src/icon/media-play.svg" alt="media play">
+                        <img class="d-icon-pause" hidden="true" src="../src/icon/media-pause.svg" alt="media pause">
+                    </button>
+                    <div class="d-volume">
+                        <button class="d-volume-btn d-btn"><img src="../src/icon/volume-high.svg" alt="volume high"></button>
+                        <div class="d-volume-panel">
+                            <div class="d-volume-control">
+                                <div class="d-volume-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="d-time">
+                        <span class="d-time-now">00:00</span>
+                        <span>/</span>
+                        <span class="d-time-len">00:00</span>
+                    </span>
+                </div>
+                <div class="d-control-right">
+                    <button class="d-setting d-btn d-setting-btn"><img src="../src/icon/wrench.svg" alt="wrench"></button>
+                    <button class="d-btn d-fullscreen-btn">
+                        <img class="d-icon-fullscreen" src="../src/icon/fullscreen-enter.svg" alt="fullscreen enter">
+                        <img class="d-icon-smallscreen" hidden="true" src="../src/icon/fullscreen-exit.svg" alt="fullscreen exit">
+                    </button>
+                </div>
+                <div class="d-progress">
+                    <div class="d-progress-bar">
+                        <div class="d-progress-now"></div>
+                        <div class="d-progress-loaded"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
