@@ -59,5 +59,4 @@ typings/
 
 # resource file
 demo/*.mp4
-src/icon
 src/css/desuplayer.css

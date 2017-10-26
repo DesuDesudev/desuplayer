@@ -20,6 +20,7 @@ var desuplayer = function () {
         this.volumehandle = this.frame.getElementsByClassName('d-volume-bar')[0];
         this.timelen = this.frame.getElementsByClassName('d-time-len')[0];
         this.timenow = this.frame.getElementsByClassName('d-time-now')[0];
+        this.progressbar = this.frame.getElementsByClassName('d-progress')[0];
         this.seekbar = this.frame.getElementsByClassName('d-progress-now')[0];
         this.loadbar = this.frame.getElementsByClassName('d-progress-loaded')[0];
 
@@ -37,7 +38,9 @@ var desuplayer = function () {
             document.addEventListener('mousemove', volumechange);
             document.addEventListener('mouseup', volumechangeend);
         });
+        this.volumecontrol.addEventListener('click', volumechange);
         this.volumebtn.addEventListener('click', this.volumetoggle);
+        this.progressbar.addEventListener('click', controlprogress);
 
         //快捷鍵
         document.addEventListener('click', () => {
@@ -65,6 +68,16 @@ var desuplayer = function () {
         } else {
             _this.videoframe.play();
         }
+    }
+
+    //進度調控制
+    var controlprogress = function (event) {
+        let e = event || window.event;
+        let rect = _this.progressbar.getBoundingClientRect();
+        let length = (rect.right + document.documentElement.scrollLeft) - (rect.left + document.documentElement.scrollLeft);
+        let pos = e.clientX - (rect.left + document.documentElement.scrollLeft);
+        let percent = pos / length;
+        _this.videoframe.currentTime = _this.videolen * percent;
     }
     
     //播放事件
