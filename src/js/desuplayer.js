@@ -32,14 +32,14 @@ var desuplayer = function () {
         this.fullscreenbtn.addEventListener('click', this.fullscreen);
         this.videoframe.addEventListener('play', whenplay);
         this.videoframe.addEventListener('pause', whenpause);
-        //this.videoframe.addEventListener('volumechange', function () {console.log(_this.videoframe.volume)} );
+        this.videoframe.addEventListener('volumechange', volumelistener);
         this.videoframe.addEventListener('timeupdate', videoplaying);
         this.volumecontrol.addEventListener('mousedown',() => {
             document.addEventListener('mousemove', volumechange);
             document.addEventListener('mouseup', volumechangeend);
         });
         this.volumecontrol.addEventListener('click', volumechange);
-        this.volumebtn.addEventListener('click', this.volumetoggle);
+        this.volumebtn.addEventListener('click', this.volumemuted);
         this.progressbar.addEventListener('click', controlprogress);
 
         //快捷鍵
@@ -127,6 +127,7 @@ var desuplayer = function () {
         let percent = (e.clientX - (_this.volumecontrol.getBoundingClientRect().left + document.documentElement.scrollLeft) - 5.5) / 40;
         percent = percent > 0 ? percent : 0;
         percent = percent < 1 ? percent : 1;
+        _this.videoframe.muted = false;
         _this.updatevolume(percent);
         console.clear();
         console.log(percent + ", " + _this.volume + ", " + _this.videoframe.volume);
@@ -135,7 +136,6 @@ var desuplayer = function () {
     desuplayer.prototype.updatevolume = function (value) {
         _this.videoframe.volume = value > 0 ? value : 0;
         _this.videoframe.volume = value < 1 ? value : 1;
-        updatevolumebar(value);
         console.log(_this.videoframe.volume);
     }
     //音量條
@@ -143,11 +143,23 @@ var desuplayer = function () {
         _this.volumehandle.style["left"] = parseFloat(value * 40) + "px";
     }
     //靜音按鈕
-    desuplayer.prototype.volumetoggle = function () {
-        if (_this.videoframe.volume == 0) {
-            _this.updatevolume(1);
+    desuplayer.prototype.volumemuted = function () {
+        if (_this.videoframe.muted) {
+            _this.videoframe.muted = false;
         } else {
-            _this.updatevolume(0);
+            _this.videoframe.muted = true;
+        }
+        if (!_this.videoframe.volume) {
+            _this.videoframe.muted = false;
+            _this.videoframe.volume = 1;
+        }
+    }
+    //監聽音量
+    var volumelistener = function () {
+        if (!_this.videoframe.muted) {
+            updatevolumebar(_this.videoframe.volume);
+        } else {
+            updatevolumebar(0);
         }
     }
 
