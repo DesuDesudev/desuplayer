@@ -151,11 +151,31 @@ var desuplayer = function () {
         }
     }
 
+    //快進
+    desuplayer.prototype.forward = function (sec) {
+        _this.videoframe.currentTime += sec;
+    }
+
+    //快退
+    desuplayer.prototype.backward = function (sec) {
+        _this.videoframe.currentTime -= sec;
+    }
+
     //快捷鍵
     var shortkey = function (key) {
         if (_this.focus) {
             console.clear();
             console.log(key);
+            switch (key.keyCode) {
+                //向右快進
+                case 39:
+                    _this.forward(5);
+                    break;
+                //向左快退
+                case 37:
+                    _this.backward(5);
+                    break;
+            }
         }
     }
 
