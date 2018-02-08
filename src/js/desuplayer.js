@@ -108,11 +108,31 @@ var desuplayer = function () {
 
     //全螢幕
     desuplayer.prototype.fullscreen = function () {
-        if (!document.webkitIsFullScreen) {
-            _this.frame.webkitRequestFullScreen();
+        if (!_this.fullscreen.check()) {
+            if (_this.frame.requestFullscreen) {
+                _this.frame.requestFullscreen();
+            }
+            else if (_this.frame.mozRequestFullScreen) {
+                _this.frame.mozRequestFullScreen();
+            }
+            else if (_this.frame.webkitRequestFullscreen) {
+                _this.frame.webkitRequestFullscreen();
+            }
         } else {
-            document.webkitExitFullscreen();
+            if (document.cancelFullScreen) {
+                document.cancelFullScreen();
+            }
+            else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            }
+            else if (document.webkitCancelFullScreen) {
+                document.webkitCancelFullScreen();
+            }
         }
+    }
+    //驗證全螢幕
+    desuplayer.prototype.fullscreen.check = function () {
+        return document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
     }
 
     //音量控制
