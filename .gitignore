@@ -60,3 +60,6 @@ typings/
 # resource file
 demo/*.mp4
 src/css/desuplayer.css
+
+#vscode setting
+.vscode
