@@ -1,0 +1,119 @@
+.desuplayer {
+  background-color: black;
+  height: 100%;
+  width: 100%;
+  position: relative; }
+  .desuplayer .d-banner {
+    height: 45px;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(0, 255, 242, 0.5));
+    position: absolute;
+    bottom: 0;
+    padding: 0 15px; }
+  .desuplayer .d-mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1; }
+  .desuplayer video {
+    width: 100%;
+    height: 100%; }
+  .desuplayer *, .desuplayer ::before, .desuplayer ::after {
+    box-sizing: border-box; }
+
+.d-banner .d-progress {
+  padding: 5px 0;
+  bottom: 35px;
+  position: absolute;
+  height: 15px;
+  width: calc(100% - 30px);
+  cursor: pointer; }
+  .d-banner .d-progress > .d-progress-bar {
+    width: 100%;
+    height: 3px;
+    position: relative;
+    background-color: rgba(145, 145, 145, 0.5); }
+    .d-banner .d-progress > .d-progress-bar > div {
+      position: absolute;
+      height: 100%; }
+    .d-banner .d-progress > .d-progress-bar > .d-progress-now {
+      background-color: #00aaff; }
+
+.d-banner * {
+  height: 40px; }
+
+.d-banner .d-control-left {
+  position: absolute;
+  bottom: 0; }
+  .d-banner .d-control-left > div, .d-banner .d-control-left > button {
+    float: left; }
+
+.d-banner .d-control-right {
+  position: absolute;
+  bottom: 0;
+  right: 15px; }
+  .d-banner .d-control-right > div {
+    display: inline-block; }
+
+.d-banner .d-btn {
+  width: 40px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer; }
+
+.d-banner img {
+  padding: 10px;
+  user-select: none; }
+
+.d-banner .d-volume-btn {
+  float: left; }
+
+.d-banner .d-time {
+  user-select: none;
+  font-size: 12px;
+  line-height: 40px; }
+
+.d-banner .d-volume-panel {
+  display: inline-block;
+  width: 52px;
+  margin: 0 10px;
+  height: 100%; }
+
+.d-banner .d-volume-control {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer; }
+  .d-banner .d-volume-control .d-volume-bar {
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    border-radius: 6px;
+    margin-top: -6px;
+    background-color: #000; }
+    .d-banner .d-volume-control .d-volume-bar:before {
+      display: block;
+      position: absolute;
+      top: 50%;
+      margin-top: -2px;
+      content: '';
+      height: 3px;
+      width: 64px;
+      background: #00aaff;
+      left: -64px; }
+    .d-banner .d-volume-control .d-volume-bar:after {
+      display: block;
+      position: absolute;
+      top: 50%;
+      margin-top: -2px;
+      content: '';
+      height: 3px;
+      width: 64px;
+      background: rgba(0, 170, 255, 0.212);
+      left: 12px; }
+
+.d-progress:hover .d-progress-bar {
+  height: 5px; }

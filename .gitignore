@@ -56,10 +56,17 @@ typings/
 
 # dotenv environment variables file
 .env
+package-lock.json
 
-# resource file
+# test resource file
 demo/*.mp4
 src/css/desuplayer.css
 
 #vscode setting
 .vscode
+
+# development test directory
+test/*
+
+# but except test html
+!test/index.html

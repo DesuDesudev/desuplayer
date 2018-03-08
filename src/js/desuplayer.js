@@ -1,3 +1,4 @@
+
 var desuplayer = function () {
     //變數
     var _this;
@@ -94,7 +95,10 @@ var desuplayer = function () {
     //播放中
     var videoplaying = function () {
         _this.timenow.innerHTML = totime(_this.videoframe.currentTime);
-        _this.seekbar.style['width'] = _this.videoframe.currentTime / _this.videolen * 100 + "%";
+        let person;
+        person = Math.max(_this.videoframe.currentTime / _this.videolen , 0);
+        person = Math.min(_this.videoframe.currentTime / _this.videolen , 1);
+        _this.seekbar.style['width'] = person * 100 + "%";
     }
 
     //秒轉換成 分/秒
@@ -104,6 +108,12 @@ var desuplayer = function () {
         if (min.toString().length < 2) min = "0" + min;
         if (sec.toString().length < 2) sec = "0" + sec;
         return min + ":" + sec;
+    }
+
+    //切換源
+    desuplayer.prototype.setsrc = function (vid) {
+        _this.videoframe.src = vid;
+        starter();
     }
 
     //全螢幕
@@ -214,3 +224,5 @@ var desuplayer = function () {
     //回傳建構式
     return desuplayer;
 }();
+
+export default desuplayer;
